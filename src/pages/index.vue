@@ -1465,6 +1465,7 @@
 </template>
 
 <script>
+import axios from '@/http/axios'
 export default {
   data(){
     return{
@@ -1510,15 +1511,23 @@ export default {
       value: '',
     }
   },
-  watch: {
-        '$route' (to,from) {
-          //对路由变化做出响应
-          console.log('有变化了') //测试点击路由的反应
-          console.log(to)
-          console.log(from)
-          //页面需要重新加载的地方
-        }
-      },
+//   watch: {
+//         '$route' (to,from) {
+//           //对路由变化做出响应
+//           console.log('有变化了') //测试点击路由的反应
+//           console.log(to)
+//           console.log(from)
+//           //页面需要重新加载的地方
+//         }
+//       },
+    created(){
+      // 查询所有的书籍
+      axios.post('/book/selectAllBook').then((data)=>{
+        console.log(data)
+      }).catch(()=>{
+
+      })
+    },
   methods:{
     
   }
